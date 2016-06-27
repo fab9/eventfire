@@ -1,6 +1,5 @@
 .idea/
 gen/
-.DS_Store
 Pods/
 Podfile.lock
 xcuserdata/
@@ -16,7 +15,7 @@ bower_components
 .sass-cache
 dist
 
-### OSX template
+### OSX
 .DS_Store
 .AppleDouble
 .LSOverride
