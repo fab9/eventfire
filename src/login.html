@@ -145,6 +145,8 @@ limitations under the License.
               refreshToken: refreshToken,
               providerData: providerData
             }, null, '  ');
+            console.log("hello");
+            navigateHome();
             // [END_EXCLUDE]
           } else {
             // User is signed out.
@@ -163,6 +165,19 @@ limitations under the License.
         document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
         document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
       }
+
+      function navigateHome() {
+        if (window.location.href.indexOf("firebaseapp") > -1) {
+          setTimeout(function () {
+            window.location.href = "https://project-3579723651056150022.firebaseapp.com";
+          }, 3000);
+        } else {
+          setTimeout(function () {
+            window.location.href = "http://www.localhost:5000";
+          }, 3000);
+        }
+      }
+
 
       window.onload = function() {
         initApp();
