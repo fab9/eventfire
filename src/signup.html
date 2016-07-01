@@ -218,9 +218,9 @@ limitations under the License.
       <!-- Header section containing title -->
       <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-          <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
+          <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
             <a href="/">
-              <h3>Firebase Authentication</h3>
+              <h3>EventFire</h3>
             </a>
           </div>
         </div>
@@ -237,7 +237,7 @@ limitations under the License.
               </div>
               <div class="mdl-card__supporting-text mdl-color-text--grey-600">
 
-                <!-- Name -->
+                <!-- First Name -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <label class="mdl-textfield__label" for="fname">First Name</label>
                   <input class="mdl-textfield__input" id="fname" name="fname" pattern="[A-Z,a-z]*" autofocus required autocomplete="fname"/>
@@ -275,14 +275,13 @@ limitations under the License.
                   <span>Already have an account?</span>
                   <a href="login.html" class="mdl-button">Log In</a>
                 </footer>
-
-                <!-- Container where we'll display the user details -->
-                <div class="quickstart-user-details-container">
-                  Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
-                  <div>Firebase auth <code>currentUser</code> object value:</div>
-                  <pre><code id="quickstart-account-details">null</code></pre>
-                </div>
               </div>
+            </div>
+            <!-- Container where we'll display the user details -->
+            <div class="quickstart-user-details-container">
+              Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+              <div>Firebase auth <code>currentUser</code> object value:</div>
+              <pre><code id="quickstart-account-details">null</code></pre>
             </div>
           </div>
         </div>
