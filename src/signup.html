@@ -240,7 +240,8 @@ limitations under the License.
                 <!-- Name done-->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <label class="mdl-textfield__label" for="fname">First Name</label>
-                  <input class="mdl-textfield__input" id="fname" name="fname" autofocus required autocomplete="fname"/>
+                  <input class="mdl-textfield__input" id="fname" name="fname" pattern="[A-Z,a-z]*" autofocus required autocomplete="fname"/>
+                  <span class="mdl-textfield__error">Only alphabet and no spaces please.</span>
                 </div>
 
                 <!-- Dog Name -->
@@ -270,7 +271,7 @@ limitations under the License.
                     <!--<button disabled class="mdl-button mdl-js-button mdl-button&#45;&#45;raised" id="quickstart-sign-in" name="signin">-->
                     <!--Sign In-->
                     <!--</button>-->
-                    <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">
+                    <button class="btn-submit mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">
                       Sign Up
                     </button>
                   </div>
