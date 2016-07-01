@@ -1,0 +1,32 @@
+{
+  "name": "eventfire",
+  "version": "1.0.0",
+  "description": "A javascript app using Firebase 3 as the backend.",
+  "main": "index.html",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^2.1.3",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^3.2.0",
+    "time-grunt": "^1.0.0"
+
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fab9/eventfire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fab9/eventfire/issues"
+  },
+  "homepage": "https://github.com/fab9/eventfire#readme"
+}
