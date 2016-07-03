@@ -28,6 +28,7 @@ function EventFire() {
     this.eventHost = document.getElementById('host');
     this.eventStartDatetime = document.getElementById('startDatetime');
     this.eventEndDatetime = document.getElementById('endDatetime');
+    this.eventMoreInfo = document.getElementById('more-info');
     this.submitButton = document.getElementById('submit');
     this.submitImageButton = document.getElementById('submitImage');
     this.imageForm = document.getElementById('image-form');
@@ -77,7 +78,7 @@ EventFire.prototype.loadMessages = function () {
     // Loads the last 12 messages and listen for new ones.
     var setMessage = function (data) {
         var val = data.val();
-        this.displayMessage(data.key, val.name, val.text, val.title, val.location, val.type, val.host, val.startDatetime, val.endDatetime, val.photoUrl, val.imageUrl);
+        this.displayMessage(data.key, val.name, val.text, val.title, val.location, val.type, val.host, val.startDatetime, val.eventMoreInfo, val.endDatetime, val.photoUrl, val.imageUrl);
     }.bind(this);
     this.messagesRef.limitToLast(12).on('child_added', setMessage);
     this.messagesRef.limitToLast(12).on('child_changed', setMessage);
@@ -97,6 +98,7 @@ EventFire.prototype.saveMessage = function (e) {
             host: this.eventHost.value,
             startDatetime: this.eventStartDatetime.value,
             endDatetime: this.eventEndDatetime.value,
+            moreInfo: this.eventMoreInfo.value,
             location: this.eventLocation.value,
             photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
         }).then(function () {
@@ -106,6 +108,7 @@ EventFire.prototype.saveMessage = function (e) {
             EventFire.resetMaterialTextfield(this.eventHost);
             EventFire.resetMaterialTextfield(this.eventStartDatetime);
             EventFire.resetMaterialTextfield(this.eventEndDatetime);
+            EventFire.resetMaterialTextfield(this.eventMoreInfo);
             EventFire.resetMaterialTextfield(this.eventLocation);
             this.toggleButton();
         }.bind(this)).catch(function (error) {
