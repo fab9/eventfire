@@ -28,6 +28,7 @@ function EventFire() {
     this.eventHost = document.getElementById('host');
     this.eventStartDatetime = document.getElementById('startDatetime');
     this.eventEndDatetime = document.getElementById('endDatetime');
+    this.eventGuestList = document.getElementById('guest-list');
     this.eventMoreInfo = document.getElementById('more-info');
     this.submitButton = document.getElementById('submit');
     this.submitImageButton = document.getElementById('submitImage');
@@ -78,7 +79,20 @@ EventFire.prototype.loadMessages = function () {
     // Loads the last 12 messages and listen for new ones.
     var setMessage = function (data) {
         var val = data.val();
-        this.displayMessage(data.key, val.name, val.text, val.title, val.location, val.type, val.host, val.startDatetime, val.eventMoreInfo, val.endDatetime, val.photoUrl, val.imageUrl);
+        this.displayMessage(
+            data.key,
+            val.name,
+            val.text,
+            val.title,
+            val.location,
+            val.type,
+            val.host,
+            val.startDatetime,
+            val.endDatetime,
+            val.guestList,
+            val.moreInfo,
+            val.photoUrl,
+            val.imageUrl);
     }.bind(this);
     this.messagesRef.limitToLast(12).on('child_added', setMessage);
     this.messagesRef.limitToLast(12).on('child_changed', setMessage);
@@ -94,22 +108,24 @@ EventFire.prototype.saveMessage = function (e) {
         this.messagesRef.push({
             name: currentUser.displayName,
             text: this.eventTitle.value,
+            location: this.eventLocation.value,
             type: this.eventType.value,
             host: this.eventHost.value,
             startDatetime: this.eventStartDatetime.value,
             endDatetime: this.eventEndDatetime.value,
+            guestList: this.eventGuestList.value,
             moreInfo: this.eventMoreInfo.value,
-            location: this.eventLocation.value,
             photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
         }).then(function () {
             // Clear message text field and SEND button state.
             EventFire.resetMaterialTextfield(this.eventTitle);
             EventFire.resetMaterialTextfield(this.eventType);
+            EventFire.resetMaterialTextfield(this.eventLocation);
             EventFire.resetMaterialTextfield(this.eventHost);
             EventFire.resetMaterialTextfield(this.eventStartDatetime);
             EventFire.resetMaterialTextfield(this.eventEndDatetime);
+            EventFire.resetMaterialTextfield(this.eventGuestList);
             EventFire.resetMaterialTextfield(this.eventMoreInfo);
-            EventFire.resetMaterialTextfield(this.eventLocation);
             this.toggleButton();
         }.bind(this)).catch(function (error) {
             console.error('Error writing new message to Firebase Database', error);
@@ -253,6 +269,7 @@ EventFire.MESSAGE_TEMPLATE =
     '<div class="host"></div>' +
     '<div class="startDatetime"></div>' +
     '<div class="endDatetime"></div>' +
+    '<div class="guestList"></div>' +
     '<div class="location"></div>' +
     '</div>';
 
@@ -260,7 +277,7 @@ EventFire.MESSAGE_TEMPLATE =
 EventFire.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 
 // Displays a Message in the UI.
-EventFire.prototype.displayMessage = function (key, name, text, type, host, title, startDatetime, endDatetime, location, picUrl, imageUri) {
+EventFire.prototype.displayMessage = function (key, name, text, type, host, title, startDatetime, endDatetime, guestList, location, picUrl, imageUri) {
     var div = document.getElementById(key);
 
     // If an element for that message does not exists yet we create it.
@@ -280,6 +297,7 @@ EventFire.prototype.displayMessage = function (key, name, text, type, host, titl
     div.querySelector('.host').textContent = host;
     div.querySelector('.startDatetime').textContent = startDatetime;
     div.querySelector('.endDatetime').textContent = endDatetime;
+    div.querySelector('.guestList').textContent = guestList;
     div.querySelector('.location').textContent = location;
 
     var messageElement = div.querySelector('.message');
