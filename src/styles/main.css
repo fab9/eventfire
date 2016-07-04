@@ -267,4 +267,29 @@ footer {
     text-align: center;
 }
 
+/*
+  ========================================
+  Form Validation
+  ========================================
+*/
 
+/* Override MDL's `is-invalid` styles */
+.mdl-textfield.is-invalid .mdl-textfield__input {
+    border-color: inherit;
+}
+
+.mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
+    color: inherit;
+}
+
+
+
+input:valid {
+    font-size: large;
+    color: green;
+}
+
+/*input:invalid {*/
+    /*font-size: large;*/
+    /*color: crimson;*/
+/*}*/
