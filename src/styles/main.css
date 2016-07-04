@@ -293,3 +293,12 @@ input:valid {
     /*font-size: large;*/
     /*color: crimson;*/
 /*}*/
+
+.validated:invalid {
+    background:#FAC3C9;
+    outline:2px red dashed;
+}
+.validated:valid {
+    background:#BDF0A8;
+    outline:2px green dashed;
+}
