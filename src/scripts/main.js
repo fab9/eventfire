@@ -46,9 +46,9 @@ function EventFire() {
     this.signInButton.addEventListener('click', this.signIn.bind(this));
 
     // Toggle for the button.
-    var buttonTogglingHandler = this.toggleButton.bind(this);
-    this.eventTitle.addEventListener('keyup', buttonTogglingHandler);
-    this.eventTitle.addEventListener('change', buttonTogglingHandler);
+    //var buttonTogglingHandler = this.toggleButton.bind(this);
+    //this.eventTitle.addEventListener('keyup', buttonTogglingHandler);
+    //this.eventTitle.addEventListener('change', buttonTogglingHandler);
 
     // Events for image upload.
     this.submitImageButton.addEventListener('click', function () {
@@ -327,13 +327,13 @@ EventFire.prototype.displayMessage = function (key, name, text, type, host, titl
 
 // Enables or disables the submit button depending on the values of the input
 // fields.
-EventFire.prototype.toggleButton = function () {
-    if (this.eventTitle.value) {
-        this.submitButton.removeAttribute('disabled');
-    } else {
-        this.submitButton.setAttribute('disabled', 'true');
-    }
-};
+//EventFire.prototype.toggleButton = function () {
+//    if (this.eventTitle.value) {
+//        this.submitButton.removeAttribute('disabled');
+//    } else {
+//        this.submitButton.setAttribute('disabled', 'true');
+//    }
+//};
 
 // Checks that the Firebase SDK has been correctly setup and configured.
 EventFire.prototype.checkSetup = function () {
