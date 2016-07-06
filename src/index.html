@@ -47,8 +47,6 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
-
-
     <!-- App Styling -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="styles/main.css">
@@ -106,13 +104,13 @@
               <form role="form" id="message-form" action="#" class="green">
                 <!-- ======= Event Title ======= -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <label class="mdl-textfield__label" for="title">Event Title:</label>
-                  <input class="mdl-textfield__input" type="text" id="title" placeholder="Pool Party" required pattern="[a-zA-Z0-9]+" autofocus/>
+                  <label class="mdl-textfield__label" for="title">Event Title<abbr title="This field is required">*</abbr></label>
+                  <input class="mdl-textfield__input" type="text" id="title" placeholder="Pool Party" required pattern="^[a-zA-Z 0-9]*$" autofocus/>
                   <!--<span class="mdl-textfield__error">Letters and numbers only please</span>-->
                 </div>
                 <!-- ======= Event type ======= -->
                 <div class="mdl-textfield mdl-js-textfield">
-                  <label for="type">Type of Event:</label>
+                  <label for="type">Type of Event<abbr title="This field is required">*</abbr></label>
                   <div>
                     <input class="mdl-selectfield" type="text" id="type" required list="eventTypes" required/>
                     <datalist id="eventTypes">
@@ -125,31 +123,31 @@
                 </div>
                 <!-- ======= Host ======= -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <label class="mdl-textfield__label" for="host">Host: </label>
-                  <input class="mdl-textfield__input" type="text" id="host" placeholder="Johnny Bravo" required />
+                  <label class="mdl-textfield__label" for="host">Host<abbr title="This field is required">*</abbr></label>
+                  <input class="mdl-textfield__input" type="text" id="host" placeholder="Johnny Bravo" required/>
                   <!--<span class="mdl-textfield__error">Letters only please</span>-->
                 </div>
                 <!-- ======= Start Date and Time ======= -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <label class="mdl-textfield__label" for="startDatetime">Start Date and Time:</label>
+                  <label class="mdl-textfield__label" for="startDatetime">Start Date and Time<abbr title="This field is required">*</abbr></label>
                   <input class="mdl-textfield__input" type="datetime-local" id="startDatetime" required/>
                   <span class="mdl-textfield__error">xxxx</span>
                 </div>
                 <!-- ======= End Date and Time ======= -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <label class="mdl-textfield__label" for="endDatetime">End Date and Time:</label>
+                  <label class="mdl-textfield__label" for="endDatetime">End Date and Time<abbr title="This field is required">*</abbr></label>
                   <input class="mdl-textfield__input" type="datetime-local" id="endDatetime" required/>
                   <span class="mdl-textfield__error">xxxx</span>
                 </div>
                 <!-- ======= Guest List  ======= -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <label class="mdl-textfield__label" for="guest-list">Guest List:</label>
+                  <label class="mdl-textfield__label" for="guest-list">Guest List<abbr title="This field is required">*</abbr></label>
                   <textarea class="mdl-textfield__input" type="text" id="guest-list" rows="3" required/></textarea>
                 </div>
 
                 <!-- ======= Location ======= -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <label class="mdl-textfield__label" for="location">Location:</label>
+                  <label class="mdl-textfield__label" for="location">Location<abbr title="This field is required">*</abbr></label>
                   <input class="mdl-textfield__input" type="text" id="location" required pattern="[a-zA-Z0-9]+"/>
                   <span class="mdl-textfield__error">Letters and numbers only</span>
                 </div>

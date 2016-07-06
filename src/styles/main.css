@@ -287,6 +287,7 @@ footer {
 input:valid {
     font-size: large;
     color: green;
+
 }
 
 /*input:invalid {*/
@@ -294,11 +295,11 @@ input:valid {
     /*color: crimson;*/
 /*}*/
 
-.validated:invalid {
-    background:#FAC3C9;
-    outline:2px red dashed;
-}
-.validated:valid {
-    background:#BDF0A8;
-    outline:2px green dashed;
-}
+/*.validated:invalid {*/
+    /*background:#FAC3C9;*/
+    /*outline:2px red dashed;*/
+/*}*/
+/*.validated:valid {*/
+    /*background:#BDF0A8;*/
+    /*outline:2px green dashed;*/
+/*}*/

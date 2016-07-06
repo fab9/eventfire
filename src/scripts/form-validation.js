@@ -60,7 +60,7 @@ $(function () {
             if (e.target.value.length == 0) {
                 e.target.setCustomValidity("Event type is required.");
             } else if (e.target.value.length < 3) {
-                e.target.setCustomValidity("Must be at least 3 characters.");
+                e.target.setCustomValidity("Must be at least 2 characters.");
             }
         }
     };
@@ -114,7 +114,8 @@ $(function () {
         }
     };
 
-    guestList.onchange = function (e) {
+    // `onchange` doesn't work on textareas so we use `onkeyup` instead
+    guestList.onkeyup = function (e) {
         //e.target.setCustomValidity("");
         if (!e.target.validity.valid) {
             if (e.target.value.length == 0) {
