@@ -260,17 +260,17 @@ EventFire.resetMaterialTextfield = function (element) {
 
 // Template for messages.
 EventFire.MESSAGE_TEMPLATE =
-    '<div class="orange message-container">' +
+    '<div class="orange message-container demo-card-wide mdl-card mdl-shadow--2dp">' +
     '<div class="spacing"><div class="pic"></div></div>' +
-    '<div class="message"></div>' +
-    '<div class="title"></div>' +
-    '<div class="name"></div>' +
-    '<div class="type"></div>' +
-    '<div class="host"></div>' +
-    '<div class="startDatetime"></div>' +
-    '<div class="endDatetime"></div>' +
-    '<div class="guestList"></div>' +
-    '<div class="location"></div>' +
+    '<div class="message mdl-card__title title"><h2 class="mdl-card__title-text type"></h2></div>' +
+
+    '<div class="mdl-card__supporting-text name"></div>' +
+    '<div class="mdl-card__supporting-text type"></div>' +
+    '<div class="mdl-card__supporting-text host"></div>' +
+    '<div class="mdl-card__supporting-text startDatetime"></div>' +
+    '<div class="mdl-card__supporting-text endDatetime"></div>' +
+    '<div class="mdl-card__supporting-text guestList"></div>' +
+    '<div class="mdl-card__supporting-text location"></div>' +
     '</div>';
 
 // A loading image URL.
