@@ -81,17 +81,15 @@ EventFire.prototype.loadMessages = function () {
         var val = data.val();
         this.displayMessage(
             data.key,
-            val.name,
-            val.text,
-            val.title,
-            val.location,
+            val.text, // event title
             val.type,
             val.host,
+            val.location,
             val.startDatetime,
             val.endDatetime,
             val.guestList,
             val.moreInfo,
-            val.photoUrl,
+            val.name,
             val.imageUrl);
     }.bind(this);
     this.messagesRef.limitToLast(12).on('child_added', setMessage);
@@ -261,23 +259,22 @@ EventFire.resetMaterialTextfield = function (element) {
 // Template for messages.
 EventFire.MESSAGE_TEMPLATE =
     '<div class="orange message-container demo-card-wide mdl-card mdl-shadow--2dp">' +
-    '<div class="spacing"><div class="pic"></div></div>' +
-    '<div class="message mdl-card__title title"><h2 class="mdl-card__title-text type"></h2></div>' +
-
-    '<div class="mdl-card__supporting-text name"></div>' +
-    '<div class="mdl-card__supporting-text type"></div>' +
-    '<div class="mdl-card__supporting-text host"></div>' +
-    '<div class="mdl-card__supporting-text startDatetime"></div>' +
-    '<div class="mdl-card__supporting-text endDatetime"></div>' +
-    '<div class="mdl-card__supporting-text guestList"></div>' +
-    '<div class="mdl-card__supporting-text location"></div>' +
+    '<div class="spacing"></div>' +
+    '<div class="message mdl-card__title text"></div>' +
+    '<div class="mdl-card__supporting-text">Type: <span class="type"></span></div>' +
+    '<div class="mdl-card__supporting-text">Location: <span class="location"></span></div>' +
+    '<div class="mdl-card__supporting-text">Host: <span class="host"></span></div>' +
+    '<div class="mdl-card__supporting-text">Start date and time: <span class="startDatetime"></span></div>' +
+    '<div class="mdl-card__supporting-text">End date and time: <span class="endDatetime"></span></div>' +
+    '<div class="mdl-card__supporting-text">Guests: <span class="guestList"></span></div>' +
+    '<div class="mdl-card__supporting-text">Additional Info: <span class="moreInfo"></span></div>' +
     '</div>';
 
 // A loading image URL.
 EventFire.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 
 // Displays a Message in the UI.
-EventFire.prototype.displayMessage = function (key, name, text, type, host, title, startDatetime, endDatetime, guestList, location, picUrl, imageUri) {
+EventFire.prototype.displayMessage = function (key, text, type, location, host, startDatetime, endDatetime, guestList,  moreInfo) {
     var div = document.getElementById(key);
 
     // If an element for that message does not exists yet we create it.
@@ -288,35 +285,19 @@ EventFire.prototype.displayMessage = function (key, name, text, type, host, titl
         div.setAttribute('id', key);
         this.messageList.appendChild(div);
     }
-    if (picUrl) {
-        div.querySelector('.pic').style.backgroundImage = 'url(' + picUrl + ')';
-    }
-    div.querySelector('.name').textContent = name;
-    div.querySelector('.title').textContent = title;
+
+    div.querySelector('.text').textContent = text;
     div.querySelector('.type').textContent = type;
+    div.querySelector('.location').textContent = location;
     div.querySelector('.host').textContent = host;
     div.querySelector('.startDatetime').textContent = startDatetime;
     div.querySelector('.endDatetime').textContent = endDatetime;
     div.querySelector('.guestList').textContent = guestList;
-    div.querySelector('.location').textContent = location;
+    div.querySelector('.moreInfo').textContent = moreInfo;
 
     var messageElement = div.querySelector('.message');
 
 
-    if (text) { // If the message is text.
-        messageElement.textContent = text;
-        // Replace all line breaks by <br>.
-        messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
-
-    } else if (imageUri) { // If the message is an image.
-        var image = document.createElement('img');
-        image.addEventListener('load', function () {
-            this.messageList.scrollTop = this.messageList.scrollHeight;
-        }.bind(this));
-        this.setImageUrl(imageUri, image);
-        messageElement.innerHTML = '';
-        messageElement.appendChild(image);
-    }
     // Show the card fading-in.
     setTimeout(function () {
         div.classList.add('visible')
