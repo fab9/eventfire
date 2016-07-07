@@ -31,7 +31,6 @@ function EventFire() {
     this.eventGuestList = document.getElementById('guest-list');
     this.eventMoreInfo = document.getElementById('more-info');
     this.submitButton = document.getElementById('submit');
-    this.submitImageButton = document.getElementById('submitImage');
     this.imageForm = document.getElementById('image-form');
     this.mediaCapture = document.getElementById('mediaCapture');
     this.userPic = document.getElementById('user-pic');
@@ -50,11 +49,6 @@ function EventFire() {
     //this.eventTitle.addEventListener('keyup', buttonTogglingHandler);
     //this.eventTitle.addEventListener('change', buttonTogglingHandler);
 
-    // Events for image upload.
-    this.submitImageButton.addEventListener('click', function () {
-        this.mediaCapture.click();
-    }.bind(this));
-    this.mediaCapture.addEventListener('change', this.saveImageMessage.bind(this));
 
     this.initFirebase();
 }

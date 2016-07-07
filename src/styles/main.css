@@ -190,16 +190,6 @@ main, #messages-card, #event-form {
     padding-left: 20px;
 }
 
-#image-form #submitImage {
-    width: auto;
-    padding: 0 6px 0 1px;
-    min-width: 0;
-}
-
-#image-form #submitImage .material-icons {
-    top: -1px;
-}
-
 .message img {
     max-width: 40px;
     /*max-height: 200px;*/
