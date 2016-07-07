@@ -31,11 +31,12 @@ function EventFire() {
     this.eventGuestList = document.getElementById('guest-list');
     this.eventMoreInfo = document.getElementById('more-info');
     this.submitButton = document.getElementById('submit');
-    this.imageForm = document.getElementById('image-form');
     this.userPic = document.getElementById('user-pic');
     this.userName = document.getElementById('user-name');
     this.signInButton = document.getElementById('sign-in');
     this.signOutButton = document.getElementById('sign-out');
+    this.signUpEmailPsw = document.getElementById('sign-up-email-psw');
+    this.logInEmailPsw = document.getElementById('log-in-email-psw');
     this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
     // Saves message on form submit.
@@ -153,8 +154,10 @@ EventFire.prototype.onAuthStateChanged = function (user) {
         this.userPic.removeAttribute('hidden');
         this.signOutButton.removeAttribute('hidden');
 
-        // Hide sign-in button.
-        this.signInButton.setAttribute('hidden', 'true');
+        // Hide sign-in buttons (both the one for google auth and the one for email/psw auth.
+        this.signInButton.setAttribute('hidden', 'true'); // sign in w google
+        this.logInEmailPsw.setAttribute('hidden', 'true'); // log in with email/psw
+        this.signUpEmailPsw.setAttribute('hidden', 'true'); // sign up with email/psw
 
 
     } else { // User is signed out!
@@ -165,6 +168,8 @@ EventFire.prototype.onAuthStateChanged = function (user) {
 
         // Show sign-in button.
         this.signInButton.removeAttribute('hidden');
+        this.logInEmailPsw.removeAttribute('hidden'); // log in with email/psw
+        this.signUpEmailPsw.removeAttribute('hidden'); // sign up with email/psw
     }
     // We load list of events.
     this.loadMessages();
