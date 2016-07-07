@@ -32,7 +32,6 @@ function EventFire() {
     this.eventMoreInfo = document.getElementById('more-info');
     this.submitButton = document.getElementById('submit');
     this.imageForm = document.getElementById('image-form');
-    this.mediaCapture = document.getElementById('mediaCapture');
     this.userPic = document.getElementById('user-pic');
     this.userName = document.getElementById('user-name');
     this.signInButton = document.getElementById('sign-in');
@@ -125,64 +124,6 @@ EventFire.prototype.saveMessage = function (e) {
     }
 };
 
-// Sets the URL of the given img element with the URL of the image stored in Firebase Storage.
-EventFire.prototype.setImageUrl = function (imageUri, imgElement) {
-    // imgElement.src = imageUri;
-
-    // If the image is a Firebase Storage URI we fetch the URL.
-    if (imageUri.startsWith('gs://')) {
-        imgElement.src = EventFire.LOADING_IMAGE_URL; // Display a loading image first.
-        this.storage.refFromURL(imageUri).getMetadata().then(function (metadata) {
-            imgElement.src = metadata.downloadURLs[0];
-        });
-    } else {
-        imgElement.src = imageUri;
-    }
-};
-
-// Saves a new message containing an image URI in Firebase.
-// This first saves the image in Firebase storage.
-EventFire.prototype.saveImageMessage = function (event) {
-    var file = event.target.files[0];
-
-    // Clear the selection in the file picker input.
-    this.imageForm.reset();
-
-    // Check if the file is an image.
-    if (!file.type.match('image.*')) {
-        var data = {
-            message: 'You can only share images',
-            timeout: 2000
-        };
-        this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
-        return;
-    }
-    // Check if the user is signed-in
-    if (this.checkSignedInWithMessage()) {
-        // We add a message with a loading icon that will get updated with the shared image.
-        var currentUser = this.auth.currentUser;
-        this.messagesRef.push({
-            name: currentUser.displayName,
-            imageUrl: EventFire.LOADING_IMAGE_URL,
-            photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
-        }).then(function (data) {
-
-            // Upload the image to Firebase Storage.
-            var uploadTask = this.storage.ref(currentUser.uid + '/' + Date.now() + '/' + file.name)
-                .put(file, {'contentType': file.type});
-            // Listen for upload completion.
-            uploadTask.on('state_changed', null, function (error) {
-                console.error('There was an error uploading a file to Firebase Storage:', error);
-            }, function () {
-
-                // Get the file's Storage URI and update the chat message placeholder.
-                var filePath = uploadTask.snapshot.metadata.fullPath;
-                data.update({imageUrl: this.storage.ref(filePath).toString()});
-            }.bind(this));
-        }.bind(this));
-    }
-};
-
 // Signs-in EventFire.
 EventFire.prototype.signIn = function (googleUser) {
     // Sign in Firebase using popup auth and Google as the identity provider.
@@ -215,8 +156,7 @@ EventFire.prototype.onAuthStateChanged = function (user) {
         // Hide sign-in button.
         this.signInButton.setAttribute('hidden', 'true');
 
-        // We load currently existing chat messages.
-        this.loadMessages();
+
     } else { // User is signed out!
         // Hide user's profile and sign-out button.
         this.userName.setAttribute('hidden', 'true');
@@ -226,6 +166,8 @@ EventFire.prototype.onAuthStateChanged = function (user) {
         // Show sign-in button.
         this.signInButton.removeAttribute('hidden');
     }
+    // We load list of events.
+    this.loadMessages();
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
