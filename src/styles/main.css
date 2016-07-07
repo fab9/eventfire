@@ -64,12 +64,13 @@ main, #messages-card, #event-form {
     width: auto;
     height: 100%;
     padding-top: 0;
+    padding-bottom: 4px; /* new */
 }
 
 #messages {
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     margin-bottom: 10px;
-    height: calc(100% - 90px);
+    /*height: calc(100% - 90px);*/
     flex: 1 1 auto;
     flex-direction: column;
     display: flex;
@@ -87,7 +88,7 @@ main, #messages-card, #event-form {
     display: block;
     margin-top: 10px;
     border-top: 1px solid #f3f3f3;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
@@ -96,24 +97,24 @@ main, #messages-card, #event-form {
     opacity: 1;
 }
 
-.message-container .pic {
-    background-image: url('../images/profile_placeholder.png');
-    background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
-    background-size: 30px;
-    border-radius: 20px;
-}
+/*.message-container .pic {*/
+    /*background-image: url('../images/profile_placeholder.png');*/
+    /*background-repeat: no-repeat;*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*background-size: 30px;*/
+    /*border-radius: 20px;*/
+/*}*/
 
-.message-container .spacing {
-    display: table-cell;
-    vertical-align: top;
-}
+/*.message-container .spacing {*/
+    /*display: table-cell;*/
+    /*vertical-align: top;*/
+/*}*/
 
 .message-container .message {
-    display: table-cell;
-    width: calc(100% - 40px);
-    padding: 5px 0 5px 10px;
+    /*display: table-cell;*/
+    /*width: calc(100% - 40px);*/
+    /*padding: 5px 0 5px 10px;*/
 }
 
 .message-container .name {
@@ -150,7 +151,7 @@ main, #messages-card, #event-form {
 }
 
 .mdl-card {
-    min-height: 0;
+    /*min-height: 0;*/
 }
 
 .mdl-card {
@@ -200,8 +201,8 @@ main, #messages-card, #event-form {
 }
 
 .message img {
-    max-width: 300px;
-    max-height: 200px;
+    max-width: 40px;
+    /*max-height: 200px;*/
 }
 
 #mediaCapture {
@@ -303,3 +304,22 @@ input:valid {
     /*background:#BDF0A8;*/
     /*outline:2px green dashed;*/
 /*}*/
+
+/*
+  ========================================
+  Event cards
+  ========================================
+*/
+
+.demo-card-wide.mdl-card {
+    width: 400px;
+}
+.demo-card-wide > .mdl-card__title {
+    font-size: 1.5rem;
+    color: #fff;
+    height: 50px;
+    background: url('../images/bg-thumb.jpeg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
