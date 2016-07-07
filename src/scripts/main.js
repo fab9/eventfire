@@ -268,7 +268,7 @@ EventFire.MESSAGE_TEMPLATE =
 EventFire.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 
 // Displays a Message in the UI.
-EventFire.prototype.displayMessage = function (key, text, type, location, host, startDatetime, endDatetime, guestList,  moreInfo) {
+EventFire.prototype.displayMessage = function (key, text, type, host, location, startDatetime, endDatetime, guestList,  moreInfo) {
     var div = document.getElementById(key);
 
     // If an element for that message does not exists yet we create it.
